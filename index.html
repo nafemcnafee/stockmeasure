@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <!--JQM CDN Libraries-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <!--Themes  -->
+    <link rel="stylesheet" href="styles/themes/theme_stockMeasure.css" />
+    <link rel="stylesheet" href="styles/themes/jquery.mobile.icons.min.css" />
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="styles/custom.css">
+
+</head>
+
+<body>
+    <!--Home Page  -->
+    <div data-role="page" data-title="Stock Measure" id="pg_homePage" data-theme="b">
+        <div data-role="header">
+            <h1>Stock Measure</h1>
+            <h1>Keep track of your portfolio. Anytime. Anywhere</h1>
+        </div>
+
+        <div class="ui-grid-b">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b">
+                <div>
+                    <button id="btnViewPortfolio">View<br />Portfolio</button>
+                    <button id="btnManagePortfolio">Add<br />Stocks</button>
+                </div>
+            </div>
+        </div>
+        <!-- Footer: about the project + introduce myself-->
+        <div data-role="footer" data-position="fixed">
+            <div class="ui-grid-a" data-inline="true">
+                <div class="ui-block-a">
+                    <h5>&nbsp Developed by: </h5>
+                    <h5>&nbsp Nafe McNafee <br /> &nbsp nmcnafee.dev@gmail.com </h5>
+                    <h6>&nbsp© All rights reserved.</h6>
+                </div>
+                <div class="ui-block-b" style=" text-align:right;">
+                    <h5>Technologies used:&nbsp</h5>
+                    <h6>JavaScript (jQuery), HTML, CSS, Themeroller, REST API, Real-time API, AWS S3. &nbsp</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Page: View Portfolio  -->
+    <div data-role="page" id="pg_portfolio" data-theme="b">
+        <div data-role="header">
+            <h1>View Portfolio</h1>
+            <a href="#pg_homePage" class="ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all" data-transition="slide"></a>
+        </div>
+        <div>
+            <table id="tbl_a" data-role="table" data-mode="reflow" class="portfolio-list ui-responsive" align="center" style="max-width: 60%;">
+                <thead>
+                    <tr>
+                        <th data-priority="1">Symbols</th>
+                        <th data-priority="2">Current</th>
+                        <th data-priority="3"><abbr title="Purchased cost per unit">Avg. Entry Price</abbr></th>
+                        <th data-priority="5">Units Holding</th>
+                        <th data-priority="4"><abbr title="% Return per unit">Gain %</abbr></th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="tbl_portfolio"></tbody>
+            </table>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div class="ui-grid-b">
+                <div class="ui-block-a"></div>
+                <div class="ui-block-b" style="text-align: center;">
+                    <h4>© Nafe McNafee</h4>
+                </div>
+                <div class="ui-block-c"></div>
+            </div>
+        </div>
+    </div>
+    <!--Page: Add Stocks  -->
+    <div data-role="page" id="pg_addStocks" data-theme="b">
+        <div data-role="header">
+            <h1>Add Stocks to Portfolio</h1>
+            <a href="#pg_homePage" class="ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all" data-transition="slide"></a>
+        </div>
+        <div id="div_search" class="ui-grid-b">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b">
+                <div class="ui-widget">
+                    <input type="text" id="search" placeholder="Search company name" required="" />
+                </div>
+
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <p>Quantity:</p>
+                        <p>Price/unit:</p>
+                        <p>Total Cost:</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <input id="add_quantity" type="number" min="1" required="" />
+                        <input id="add_unitprice" type="text" required="" />
+                        <input id="add_totalPrice" type="text" readonly>
+                    </div>
+                    <div>
+                        <button id="add_stock">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-block-c">
+                <a id="reset_add" class="ui-btn ui-icon-refresh ui-btn-icon-notext ui-corner-all" style="float:left;"></a>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div class="ui-grid-b">
+                <div class="ui-block-a"></div>
+                <div class="ui-block-b" style="text-align: center;">
+                    <h4>© Nafe McNafee</h4>
+                </div>
+                <div class="ui-block-c"></div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/main_script.js"></script>
+</body>
+
+</html>
